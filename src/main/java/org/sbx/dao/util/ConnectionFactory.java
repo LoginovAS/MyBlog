@@ -1,15 +1,22 @@
 package org.sbx.dao.util;
 
-import org.sbx.dao.enums.ConnectionProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by isilme on 4/14/17.
- */
 public class ConnectionFactory {
+
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionFactory.class);
+
+    private static final String CANNOT_LOAD_DRIVER_LOG_MESSAGE = "Cannot load driver: {}.";
+
+    private static final String DRIVER = "com.jdbc.mysql.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/blog";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
 
     private Connection connection;
     private String driver;
@@ -18,10 +25,10 @@ public class ConnectionFactory {
     private String password;
 
     public ConnectionFactory(){
-        driver = ConnectionProperty.DRIVER.toString();
-        url = ConnectionProperty.URL.toString();
-        user = ConnectionProperty.NAME.toString();
-        password = ConnectionProperty.PASSWORD.toString();
+        driver = DRIVER;
+        url = URL;
+        user = USERNAME;
+        password = PASSWORD;
     }
 
     public Connection getConnection() throws SQLException{
@@ -30,8 +37,8 @@ public class ConnectionFactory {
             connection = DriverManager.getConnection(url, user, password);
             connection.setAutoCommit(false);
         } catch (ClassNotFoundException ex){
-            System.out.println("Cannot load driver: " + driver);
-            System.out.println(ex);
+            LOGGER.error(CANNOT_LOAD_DRIVER_LOG_MESSAGE, driver);
+            LOGGER.trace(ex);
         }
 
         return connection;

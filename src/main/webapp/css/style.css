@@ -1,0 +1,151 @@
+/* ------------------------
+Structure
+------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: #333;
+  background: #fff;
+  font-family: "Sagoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.94em;
+  line-height: 135%;
+}
+
+aside, nav, footer, header, section { display: block; }
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ------------------------
+Structure elements
+------------------------ */
+
+#wrapper {
+  margin-top: 40px;
+  width: 1200px;
+  margin: 0 auto;
+  height: auto !important;
+}
+
+.header {
+  width: 100%;
+  background: #A052EB;
+  height: 20px;
+  z-index: 4;
+}
+
+#headerInner {
+  position: relative;
+  border: 0px solid #333;
+  width: 1200px;
+  height: 250px;
+  margin: 0 auto;
+  margin-top: 0px;
+}
+
+#content {
+  margin-top: 10px;
+}
+
+#content #colLeft {
+  background: #fff;
+  float: left;
+  width: 800px;
+  margin-right: 0px;
+}
+
+#content #colRight {
+  margin-left: 45px;
+  float: left;
+  width: 350px;
+  position: relative;
+}
+
+#middle:after {
+  content: '.';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+}
+
+/* ------------------------
+Content
+------------------------ */
+
+.recordForm {
+  width: 300px;
+}
+
+#loginFormBlock {
+  margin-right: 5px;
+  float: right;
+  width: 500px;
+  position: relative;
+}
+
+.newRecordForm {
+  margin: 0px;
+  float: left;
+  width: 800px;
+  position: relative;
+}
+
+.recordFormLabel {
+  width: 50px;
+  float: left;
+}
+
+/* ------------------------
+Top menu
+------------------------ */
+
+.topMenu {
+  height: 20px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border: 0px solid #1FA2E1;
+}
+
+.topMenu ul li {
+  background: #A052EB;
+  float: left;
+  height: 20px;
+}
+
+.topMenu ul {
+  padding-left: 0px;
+}
+
+.topMenu ul li a {
+  margin-top: 0px;
+  font-weight: 100;
+  border-right: 0px solid #adadad;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  line-height: 12px;
+  font-size: 10px;
+  padding: 8px 12px 12px 12px;
+}
+
+.topMenu ul li a:hover {
+  background: #fff;
+  color: #555;
+}

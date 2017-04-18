@@ -1,65 +1,99 @@
 package org.sbx.services.impl;
 
-import org.sbx.dao.RecordDao;
-import org.sbx.dao.impl.RecordDaoImpl;
-import org.sbx.model.Record;
+import org.sbx.dao.Dao;
+import org.sbx.dao.impl.RecordDao;
+import org.sbx.model.impl.Record;
 import org.sbx.services.RecordService;
 
-import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by isilme on 4/14/17.
- */
 public class RecordServiceImpl implements RecordService {
 
-    private RecordDao recordDao;
+    private Dao<Record> recordDao;
 
     public RecordServiceImpl(){
-        recordDao = new RecordDaoImpl();
+        recordDao = new RecordDao();
     }
 
     public boolean addRecord(Record record) {
 
-        boolean success = recordDao.addRecord(record);
+        boolean success = false;
 
-        if (success){
-            System.out.println("New record has been added.");
-        } else {
-            System.out.println("Cannot add new record.");
+        try {
+            success = recordDao.addObjectToDB(record);
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
         }
 
         return success;
     }
 
-    public boolean addRecords(List<Record> records) {
+    public int addRecords(List<Record> records) {
 
-        boolean success = recordDao.addRecords(records);
+        int success = 0;
 
-        if (recordDao.addRecords(records)){
-            System.out.println("New records have been added.");
-        } else {
-            System.out.println("Cannot add new records.");
+        try {
+            success = recordDao.addListToDB(records);
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
         }
 
         return success;
     }
 
     public Record getById(int id) {
-        return recordDao.getById(id);
+
+        Record record = new Record();
+
+        try {
+            record = recordDao.getById(id);
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+
+        return record;
     }
 
-    public List<Record> getByDateRange(Date firstDate, Date lastDate) {
+    public List<Record> getByDateRange(LocalDateTime firstDate, LocalDateTime lastDate) {
 
-        return recordDao.getByDateRange(firstDate, lastDate);
+        List<Record> list = new ArrayList<>();
+
+        try {
+            list = recordDao.getByDateRange(firstDate, lastDate);
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
 
     }
 
     public List<Record> getByTitle(String title) {
-        return recordDao.getByTitle(title);
+
+        List<Record> list = new ArrayList<>();
+
+        try {
+            list = recordDao.getByTitle(title);
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
     }
 
     public List<Record> getAllRecords() {
-        return recordDao.getAllRecords();
+
+        List<Record> list = new ArrayList<>();
+
+        try {
+            list = recordDao.getAllRecords();
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
     }
 }

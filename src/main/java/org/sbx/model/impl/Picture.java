@@ -1,8 +1,5 @@
-package org.sbx.model;
+package org.sbx.model.impl;
 
-/**
- * Created by isilme on 4/13/17.
- */
 public class Picture {
 
     private int picId;
