@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet("/add-data")
 public class AddDataServlet extends HttpServlet {
@@ -32,7 +32,7 @@ public class AddDataServlet extends HttpServlet {
         record.newBuilder()
                 .setTitle(request.getParameter("recordTitle"))
                 .setAuthor(request.getParameter("recordAuthor"))
-                .setDate(new Date(new java.util.Date().getTime()))
+                .setDate(new Date())
                 .setBody(request.getParameter("recordText"))
                 .build();
 

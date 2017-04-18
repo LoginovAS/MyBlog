@@ -1,6 +1,8 @@
 package org.sbx.model.impl;
 
-public class Picture {
+import org.sbx.model.DBObject;
+
+public class Picture implements DBObject {
 
     private int picId;
     private String picLink;

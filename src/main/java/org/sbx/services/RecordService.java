@@ -2,7 +2,6 @@ package org.sbx.services;
 
 import org.sbx.model.impl.Record;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
